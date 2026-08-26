@@ -5,7 +5,7 @@ from PIL import Image
 from tensorflow.keras.models import load_model
 
 # Load trained model
-model = load_model("models/age_gender_model.keras", compile=False)
+model = load_model("models/age_gender_model_fixed.keras", compile=False)
 
 
 def predict_image(image_path):
