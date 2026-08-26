@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Age & Gender Detection</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Age & Gender Detection</h1>
+
+        <p class="subtitle">
+            Upload a face image to predict age and gender
+        </p>
+
+        <form action="{{ url_for('predict') }}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <div class="upload-box">
+
+                <label for="image">
+                    Select Image
+                </label>
+
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                    required
+                >
+
+            </div>
+
+            <button type="submit">
+                Detect Age & Gender
+            </button>
+
+        </form>
+
+
+        {% if image %}
+
+        <div class="result">
+
+            <h2>Prediction Result</h2>
+
+            <img
+                src="{{ image }}"
+                alt="Uploaded Image"
+                width="300"
+            >
+
+            <div class="prediction">
+
+                <p>
+                    <strong>Gender:</strong>
+                    {{ gender }}
+                </p>
+
+                <p>
+                    <strong>Age:</strong>
+                    {{ age }} Years
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
